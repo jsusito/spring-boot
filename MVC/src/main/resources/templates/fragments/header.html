@@ -1,0 +1,62 @@
+
+<header xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+	<!-- Ponemos esta barra que es especial para poner botones dentro -->
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+	   <div class="container-fluid d-flex justify-content-between mx-2">
+	   	<div>	
+	   		<a class="navbar-brand">Filmo Tokio</a>
+	   	</div>
+	   
+	   	<div>
+		   	<!-- Esta etiqueta sec:authorize muestra la capa solo si est� autorizado -->
+		   	<div sec:authorize="isAuthenticated()" class="collapse navbar-collapse clearfix" id="navbarColor01">
+		   		<ul class="nav navbar-nav  m-2 m-lg-0" role="tablist">
+			   					   		
+			   		<li class="nav-item" role="presentation">
+			   			<a class="nav-link active" th:href="@{/search-film}" role="tab">
+			   			Buscar Película
+			   			</a>
+			   		</li>
+			   		<li class="nav-item" role="presentation">
+			   			<a class="nav-link active"  th:href="@{/new-person}" role="tab">
+			   			Crear Persona
+			   			</a>
+			   		</li>
+			   		<li class="nav-item" role="presentation">
+			   			<a class="nav-link active"  th:href="@{/new-film}" role="tab">
+			   			Nueva Película
+			   			</a>
+			   		</li>
+			   		<li class="nav-item" sec:authorize="hasAuthority('ADMIN')" role="tab">
+			   			<a class="nav-link active" th:href="@{/new-user}">
+			   			Crear Usuario
+			   			</a>
+			   		</li>
+		   		</ul>
+		   		<div class="tab-content" id="nav-tabContent">
+				  <div class="tab-pane fade show active" id="pelicula" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+				  <div class="tab-pane fade" id="persona" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+				  <div class="tab-pane fade" id="nueva-pelicula" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+				  <div class="tab-pane fade" id="crear-usuario" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+				</div>
+			</div>
+	   	</div>
+	   	  <div>
+		   	<div sec:authorize="isAuthenticated()" class="d-flex justify-content-around" >
+	                
+	                <a class="mx-4 btn-outline-success">
+	                	<img   th:src="@{/images/users/user-profile.png}" height="40px" width="40px"/>
+	                	<span th:if="${@currentUser.surname} !=null" class="ms-2 text-warning" th:text="${@currentUser.surname}" ></span>
+	                </a>
+	                
+	                
+	                <a class="btn btn-outline-primary" th:href="@{/logout}">Cerrar sesión</a>
+	        </div>
+	        <div sec:authorize="!isAuthenticated()" class="align-items-right">
+	            <a class="btn btn-outline-primary" th:href="@{/login}">Iniciar sesión</a>
+	            <a class="btn btn-outline-primary" th:href="@{/new-user}">Registro</a>
+	        </div>
+        </div>
+	   </div> 
+	 </nav>
+</header>

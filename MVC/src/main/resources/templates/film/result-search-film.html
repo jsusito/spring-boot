@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/head :: head(title='tokio films')">
+
+<body>
+<header th:replace="fragments/header"></header>
+<div class="container mt-5 " >
+	<div class="row">
+		<h2 class="display">Buscar Películas</h2>
+		<div class="col-lg-6 col-sm-12">	
+			<form th:action="@{/show-film}" th:object="${film}" method="post">
+			  <div class="mb-3">
+			    <label for="nombre" class="form-label">Título</label>
+			    <input th:field="*{title}" type="text" class="form-control" aria-describedby="emailHelp" id="nombre">
+			    <div class="mt-2">
+			    	<button type="submit" class="btn btn-primary" >Enviar</button>
+			  		<button type="button" onclick ="history.back()" class="btn btn-primary" >Volver</button>
+			  	</div>
+			  </div>
+			  
+			</form>
+		</div>
+	</div>
+</div>
+	
+     
+
+<footer th:replace = "fragments/footer"></footer>
+</body>
+</html>

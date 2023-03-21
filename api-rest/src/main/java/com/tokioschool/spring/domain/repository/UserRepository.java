@@ -1,0 +1,15 @@
+package com.tokioschool.spring.domain.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.tokioschool.spring.domain.User;
+
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
+
+	Optional<User> findByUsername(String username);
+
+}

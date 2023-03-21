@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/head :: head(title='tokio films')">
+
+<body>
+<header th:replace="fragments/header"></header>
+<div class="container mt-5 d-flex justify-content-center fluid" >
+	<div class="row d-flex justify-content-center fluid">
+		
+		
+		<div class="col-sm-12 d-flex justify-content-center">	
+			<h2 class="display">Bienvenido a FilmoTokio</h2>	
+		</div>
+		<div class="col-sm-12 fluid d-flex justify-content-center">
+		<img alt="" th:src="@{'/images/tokio.jpg'}" width="70%" height="70%">
+		
+		</div>
+	</div>
+	
+	<span class="text-success bg-success" th:text="${result}"></span>
+</div>
+	
+     
+
+<footer th:replace = "fragments/footer"></footer>
+</body>
+</html>

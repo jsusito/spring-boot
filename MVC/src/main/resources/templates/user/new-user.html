@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/head :: head(title='tokio films')">
+
+<body onload="checkDate()">
+<!--  
+<script type="text/javascript">
+function setdate(){
+	const currentdate = new Date();
+	const inputDate = document.getElementById("fecha");
+	const today =[currentdate.getFullYear() - 7, currentdate.getMonth(), currentdate.getDate()];
+	let makeSelectedDate = "";
+	for(date of today)
+	    { 
+		makeSelectedDate += date + "-";
+	    }
+	
+	if(inputDate.value > makeSelectedDate)
+		return false;
+	else 
+		return true;
+	
+}
+function checkDate(){
+	document.forms.newuserdata.onsubmit = setdate;
+
+}
+
+</script>
+-->
+<header th:replace="fragments/header"></header>
+<div class="container mt-5 " >
+	<div class="row">
+		<h2 class="display">Nuevo Usuario</h2>
+		<div class="col-lg-4 col-sm-12">	
+			<form th:action="@{/new-user}" th:object="${newUser}" method="post" name="newuserdata">
+			  <div class="mb-3">
+			    <label for="name" class="form-label required">nombre de usuario</label> 
+			    <span class="text-danger fw-bold" th:text="'Ya existe: ' + ${username}" th:if="${username} != '' "></span>
+			    <input th:field="*{username}" type="text" class="form-control" aria-describedby="emailHelp" id="name" autofocus="autofocus" required>
+			    <label for="password" class="form-label required">Password</label>
+			    <input th:field="*{password}" type="password" class="form-control" aria-describedby="emailHelp" id="password" required>
+			    <label for="email" class="form-label required">Email</label>
+			    <input th:field="*{email}" type="email" class="form-control required" aria-describedby="emailHelp" id="email" required>
+			    
+			    <label for="nombre" class="form-label">Nombre</label>
+			    <input th:field="*{name}" type="text" class="form-control" aria-describedby="emailHelp" id="nombre">
+			    <label for="apellido" class="form-label">Apellido</label>
+			    <input th:field="*{surname}" type="text" class="form-control" aria-describedby="emailHelp" id="apellido">
+			    
+			    <label for="fecha" class="form-label required">Fecha de Nacimiento</label>
+			    <input th:field="*{birtDate}" type="date" class="form-control" aria-describedby="emailHelp" id="fecha" required min="1920-01-01" max="2030-12-12" value="2017-06-01">
+			    <div class="mt-2" sec:authorize="hasAuthority('ADMIN')">
+				    <label for="tipos" class="form-label required">Roles</label>
+				    <select  th:field="*{roleForm}"  class="form-select" aria-describedby="tipos de persona" id="tipos" required>
+				    	  <option th:each="type : ${diferentRoles}" 
+	         				 th:value="${type.getId()}" 
+	          				 th:text="${type}">
+	          			  </option> 
+				    </select>
+			    </div>
+			   
+			    
+			    <div class="mt-2">
+			    	<button type="submit" class="btn btn-primary" >Registrar cuenta</button>
+			  		<button type="button" onclick ="history.back()" class="btn btn-primary" >Volver</button>
+			  	</div>
+			  </div>
+			  
+			</form>
+		</div>
+		<div class="col-lg-8 col-sm-12">
+			<img th:src="@{'/images/users/portada.jpg'}" class="img-fluid">
+		</div>
+	</div>
+	<span class="text-success bg-success" th:text="${result}"></span>
+</div>
+	
+     
+
+<footer th:replace = "fragments/footer"></footer>
+</body>
+</html>

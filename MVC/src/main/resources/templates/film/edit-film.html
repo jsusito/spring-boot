@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/head :: head(title='tokio films')">
+<!--/* @thymesVar id="title" type="java.lang.String" */-->
+<body>
+<header th:replace="fragments/header"></header>
+<div class="container my-5 " >
+	<form th:action="@{/new-film}" th:object="${film}" method="post">
+	<div class="row">
+		<h2 class="display">Nueva Película</h2>
+		<div class="col-lg-4 col-sm-12">	
+			
+			  <div class="mb-3">
+			    <label for="title" class="form-label">titulo</label>
+			    <input th:field="*{title}" type="text" class="form-control" aria-describedby="emailHelp" id="title" autofocus="autofocus" required>
+			  </div>  
+			  <div class="mb-3">
+			    <label for="director" class="form-label">Director</label>
+			    <select  th:field="*{filmDirector}"  size="4" class="form-select" aria-describedby="tipos de persona" id="director">
+				    	  <option th:each="type : ${directors}" 
+	         				 th:value="${type.getId()}" 
+	          				 th:text="${type}">
+	          			  </option> 
+				</select>
+			  </div>
+			  <div class="mt-3">
+			  	<label for="musicians" class="form-label" >Músicos</label>
+			    <select  th:field="*{musicians}"  class="form-select" aria-describedby="musicos" id="musicians"  multiple size="4">
+				    	  <option th:each="type : ${selectMusicians}" 
+	         				 th:value="${type.getId()}" 
+	          				 th:text="${type}">
+	          			  </option> 
+				</select>
+			  </div>
+			   
+			    
+			    
+			    <div class="mt-2" th:if="${film.title} == null">
+			    	<button type="submit" class="btn btn-primary" >Enviar</button>
+			  		<button type="button" onclick ="history.back()" class="btn btn-primary" >Volver</button>
+			  	</div>
+			  
+			  
+			
+		</div>
+		<div class="col-lg-4 col-sm-12">
+			<div class="mb-3">
+				<label for="year" class="form-label">Año</label>
+				<input th:field="*{year}" type="number" class="form-control" aria-describedby="emailHelp" id="year" min="1960" max="2100" required>
+			</div>
+			<div class="mb-3">
+				<label for="screen-writer" class="form-label">Guionistas</label>
+				<select  th:field="*{screenWriters}"  multiple size="4" class="form-select" aria-describedby="tipos de persona" id="screen-writer">
+				    	  <option th:each="type : ${selectScreenWriter}" 
+	         				 th:value="${type.getId()}" 
+	          				 th:text="${type}">
+	          			  </option> 
+				</select>
+			</div>
+			<div class="mt-3">
+			  	<label for="photographer" class="form-label" >Fotógrafo</label>
+			    <select  th:field="*{filmPhotographer}"  class="form-select" aria-describedby="photographer" id="photographer">
+				    	  <option th:each="type : ${selectphotographers}" 
+	         				 th:value="${type.getId()}" 
+	          				 th:text="${type}">
+	          			  </option> 
+				</select>
+			  </div> 
+		</div>
+		<div class="col-lg-4 col-sm-12">
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Duración</label>
+				<input th:field="*{duration}" type="number" class="form-control" aria-describedby="emailHelp" min="5" max="300" id="duration" required>
+			</div>
+			<div class="mb-3">
+				<label for="actors" class="form-label">Actores</label>
+				<select  th:field="*{actors}"  multiple size="4" class="form-select" aria-describedby="actors" id="actors">
+				    	  <option th:each="type : ${actors}" 
+	         				 th:value="${type.getId()}" 
+	          				 th:text="${type}">
+	          			  </option> 
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="sinopsis" class="form-label">sinopsis</label>
+				<textarea th:field="*{sipnosis}"  class="form-control" aria-describedby="sinopsis"  id="sinopsis" rows="3" required>Sinopsis</textarea>
+			</div>
+		</div>
+	</div>
+	</form>
+	<span class="badge bg-success" th:text="${result}"></span>
+	<div class="row mt-4">
+		<h2 class="display">Poster</h2>
+		<div class="col-lg-6 col-sm-12">	
+			<form class="row g-3" th:action="@{/save-image}"  method="post" enctype="multipart/form-data">
+				<h6 class="text-secondary">Imagen del Producto</h6>
+				<div class="mt-3">
+				<img class="img-thumbnail" th:src="@{'/external/'} + ${poster}">
+				<input class="btn btn-secondary" id="image-file" type="file" name="image" />
+				<button class="btn btn-primary profile-button" type="submit">Editar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+	
+</div>
+<footer th:replace = "fragments/footer"></footer>
+</body>
+</html>

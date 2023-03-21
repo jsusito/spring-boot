@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/headSign">
+<body class="text-center">
+ <main class="form-signin w-100 m-auto">
+  <form th:action="@{/login}" method="post" name="sign">
+    <svg width="132" height="50" viewBox="0 0 132 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M55.9894 18.1833H44.2639L52.5555 9.7557L43.0249 0.0696836L28.0624 15.2771L13.0343 0L3.5037 9.68601L11.865 18.1833H0V31.8823H11.7255L3.43395 40.3099L12.9645 50L28.0624 34.6491L43.0947 49.9303L52.6211 40.2402L44.3993 31.8823H55.9894V18.1833Z" fill="#0A169A"></path>
+                <path d="M127.516 30.8896C127.516 32.1111 128.521 33.1728 129.743 33.1728C130.966 33.1728 131.996 32.107 131.996 30.8896C131.996 29.6476 130.966 28.627 129.743 28.627C128.521 28.627 127.516 29.6476 127.516 30.8896Z" fill="#0A169A"></path>
+                <path d="M120.278 30.2023C119.031 30.2023 117.829 29.2923 117.829 27.4519C117.829 25.5909 119.031 24.726 120.278 24.726C121.546 24.726 122.728 25.5909 122.728 27.4519C122.728 29.3169 121.546 30.2023 120.278 30.2023ZM120.278 21.623C117.041 21.623 114.506 24.0415 114.506 27.4519C114.506 30.8664 117.041 33.3053 120.278 33.3053C123.536 33.3053 126.051 30.8664 126.051 27.4519C126.051 24.0415 123.536 21.623 120.278 21.623Z" fill="#0A169A"></path>
+                <path d="M109.435 18.5849C109.435 19.6712 110.309 20.5566 111.359 20.5566C112.451 20.5566 113.329 19.6712 113.329 18.5849C113.329 17.4987 112.455 16.6133 111.359 16.6133C110.309 16.6133 109.435 17.4987 109.435 18.5849Z" fill="#0A169A"></path>
+                <path d="M113.041 21.9551H109.718V32.9733H113.041V21.9551Z" fill="#0A169A"></path>
+                <path d="M108.168 21.9543H103.86L100.557 25.6557V16.6133H97.2339V32.9725H100.557V30.2672L101.628 29.0948L104.188 32.9725H108.254L103.925 26.5862L108.168 21.9543Z" fill="#0A169A"></path>
+                <path d="M89.9761 30.2023C88.7289 30.2023 87.5268 29.2923 87.5268 27.4519C87.5268 25.5909 88.7289 24.726 89.9761 24.726C91.2438 24.726 92.4254 25.5909 92.4254 27.4519C92.4254 29.3169 91.2438 30.2023 89.9761 30.2023ZM89.9761 21.623C86.7391 21.623 84.2036 24.0415 84.2036 27.4519C84.2036 30.8664 86.7391 33.3053 89.9761 33.3053C93.2336 33.3053 95.7486 30.8664 95.7486 27.4519C95.7486 24.0415 93.2336 21.623 89.9761 21.623Z" fill="#0A169A"></path>
+                <path d="M86.0744 19.9581V16.6133H73.0688V19.9581H77.8321V32.9725H81.2865V19.9581H86.0744Z" fill="#0A169A"></path>
+            </svg>
+    <p class="h5"></p>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Nombre de Usuario" name="username" required autofocus>
+      <label for="floatingInput">Usuario</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+      <label for="floatingPassword">Password</label>
+    </div>
+    
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022
+  </form>
+  <div th:if="${param.error}" class="alert alert-success" role="alert">
+  		usuario/password incorrectos
+  </div>
+ </main>
+
+
+</body>
+</html>

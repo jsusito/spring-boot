@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/head :: head(title='tokio films')">
+
+<body>
+<header th:replace="fragments/header"></header>
+<div class="alert alert-danger" role="alert">
+  el siguiente error se ha producido: <strong th:text="${error}"></strong>
+  <p th:text="${exception}"></p>
+  <p th:text="${url}"></p>
+</div>
+<p class="alert alert-success" role="alert"> <a href="#" onclick="history.back()" >Volver</a></p>
+	
+     
+
+<footer th:replace = "fragments/footer"></footer>
+</body>
+</html>

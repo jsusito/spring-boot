@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:replace="fragments/head :: head(title='tokio films')">
+
+
+<body>
+
+<header th:replace="fragments/header"></header>
+<div class="container mt-5 " >
+	<div class="row">
+		<h2 class="display">Nuevo Artista</h2>
+		<div class="col-lg-6 col-sm-12">	
+			<form th:action="@{/new-person}" th:object="${person}" method="post">
+			  <div class="mb-3">
+			    <label for="nombre" class="form-label required">Nombre</label>
+			    <input th:field="*{name}" type="text" class="form-control" aria-describedby="emailHelp" id="name" required>
+			    <label for="nombre" class="form-label required">Apellido</label>
+			    <input th:field="*{surname}" type="text" class="form-control" aria-describedby="emailHelp" id="surname" required>
+			    <label for="nombre" class="form-label">Tipos de Trabajo</label>
+			    <select  th:field="*{typePerson}"  class="form-select" aria-describedby="tipos de persona" id="tipos">
+			    	  <option th:each="type : ${diferentPerson}" 
+         				 th:value="${type}" 
+          				 th:text="${type}">
+          			  </option> 
+			    </select>
+			    <div class="mt-2">
+			    	<button type="submit" class="btn btn-primary" th:if="${result} == null">Enviar</button>
+			  		<a type="button" th:href="@{'/new-person'}" class="btn btn-primary" >Volver</a>
+			  	 </div>
+			  </div>
+			  
+			</form>
+		</div>
+	</div>
+	<span class="text-ligth bg-success" th:text="${result}"></span>
+</div>
+	
+     
+
+<footer th:replace = "fragments/footer"></footer>
+</body>
+</html>
